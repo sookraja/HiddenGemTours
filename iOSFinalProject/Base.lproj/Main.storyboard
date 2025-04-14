@@ -237,13 +237,6 @@
                                 <color key="textColor" red="0.41568627450000001" green="0.49019607840000001" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqz-nD-ksH">
-                                <rect key="frame" x="0.0" y="156" width="125" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VM2-Po-kbq">
                                 <rect key="frame" x="146" y="516" width="100" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -281,7 +274,6 @@
                         <outlet property="mapView" destination="YFe-MD-Yx5" id="w8c-lK-OrK"/>
                         <outlet property="myTableView" destination="asQ-3Y-7mN" id="8WV-PO-MwJ"/>
                         <outlet property="tourNameLabel" destination="ebn-c0-16C" id="1yU-F3-PJO"/>
-                        <outlet property="weatherLabel" destination="Qqz-nD-ksH" id="mJK-Yr-29R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3Z-ar-Ixd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
