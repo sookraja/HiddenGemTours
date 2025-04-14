@@ -3,7 +3,7 @@
 //  iOSFinalProject
 //
 //  Created by Carlos Castro on 2025-04-12.
-//  Edited by Edgar for core location,mapkit but navigation really/data of locations. also did the UIs
+//  Edited by Edgar for core location,mapkit but data of locations was carlos. also did the UIs
 //
 
 import UIKit
@@ -30,11 +30,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView.delegate = self
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        
 
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
@@ -45,35 +40,30 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     
   
     func calculateDirectionsToStop(stopIndex: Int) {
-        guard stopIndex < tourStops.count else { return }
         currentStopIndex = stopIndex
         
         let stop = tourStops[stopIndex]
-        guard let stopLat = stop.latitude, let stopLong = stop.longitude else { return }
-        let stopCoordinates = CLLocationCoordinate2D(latitude: stopLat, longitude: stopLong)
+        let stopCoordinates = CLLocationCoordinate2D(latitude: stop.latitude!, longitude: stop.longitude!)
         
-        guard let userLocation = mapView.userLocation.location else { return }
+        let userLocation = mapView.userLocation.location!
       
         mapView.removeOverlays(mapView.overlays)
         
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation.coordinate, addressDictionary: nil))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stopCoordinates, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stopCoordinates,addressDictionary: nil))
         request.requestsAlternateRoutes = false
         request.transportType = .walking
         
         let directions = MKDirections(request: request)
         directions.calculate(completionHandler: { [unowned self] response, error in
-            guard let response = response, let route = response.routes.first else {
-                print("Error calculating directions: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
+            let route = response!.routes.first!
             
             self.mapView.addOverlay(route.polyline, level: .aboveRoads)
             self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             self.routeSteps.removeAllObjects()
             self.distSteps.removeAllObjects()
-            
+          
             for step in route.steps {
                 self.routeSteps.add(step.instructions)
                 let d = step.distance
@@ -81,7 +71,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
             }
 
             self.myTableView.reloadData()
-           
         })
     }
     
@@ -137,7 +126,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         }
     }
 
-    
     @IBAction func nextStopTapped(_ sender: UIButton) {
         let nextIndex = currentStopIndex + 1
         if nextIndex < tourStops.count {
@@ -159,8 +147,8 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "mapcell") as? MapTableCell ??
-        MapTableCell(style: .default, reuseIdentifier: "mapcell")
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "mapcell") as? TourTableCell ??
+        TourTableCell(style: .default, reuseIdentifier: "mapcell")
 
         tableCell.instruction.text = routeSteps[indexPath.row] as? String
         tableCell.distance.text = distSteps[indexPath.row] as? String

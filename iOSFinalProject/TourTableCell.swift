@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapTableCell: UITableViewCell {
+class TourTableCell: UITableViewCell {
 
     @IBOutlet var instruction : UILabel!
     @IBOutlet var distance : UILabel!
@@ -19,7 +19,6 @@ class MapTableCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
