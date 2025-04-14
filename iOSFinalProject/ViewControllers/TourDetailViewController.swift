@@ -9,12 +9,14 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tourNameLabel: UILabel!
     @IBOutlet weak var beginTourButton: UIButton!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var weatherLabel: UILabel!
+    let locationManager = CLLocationManager()
 
     var tourEntity: TourEntity!
     let tourManager = TourManager()
@@ -22,8 +24,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     var firstCoord: CLLocationCoordinate2D!
     var currentStopIndex = 0
     
-  
-    let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 550
     var routeSteps  = [" "] as NSMutableArray
     var distSteps =  [" "] as NSMutableArray
@@ -40,7 +40,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
         locationManager.startUpdatingLocation()
-    
+        setupWeatherLabel()
         showTour()
     }
     
@@ -52,6 +52,9 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         let stop = tourStops[stopIndex]
         guard let stopLat = stop.latitude, let stopLong = stop.longitude else { return }
         let stopCoordinates = CLLocationCoordinate2D(latitude: stopLat, longitude: stopLong)
+        
+        // Fetch weather data for stop location
+        fetchWeather(lat: stopLat, long: stopLong)
         
         // Get user's current location
         guard let userLocation = mapView.userLocation.location else { return }
@@ -170,4 +173,38 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         
         return tableCell
     }
+    
+    // WeatherKit Implementation:
+    
+    func fetchWeather(lat: Double, long: Double) {
+        let apiKey = "35d5aa775f94458ebb2221915250504"
+        let urlString = "https://api.weatherapi.com/v1/current.json?key=\(apiKey)&q=\(lat),\(long)"
+
+        guard let url = URL(string: urlString) else { return }
+
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else { return }
+
+            do {
+                let weatherData = try JSONDecoder().decode(WeatherAPIResponse.self, from: data)
+                DispatchQueue.main.async {
+                    self.weatherLabel.text = "\(weatherData.current.temp_c)°C - \(weatherData.current.condition.text)"
+                }
+            } catch {
+                print("Failed to decode WeatherAPI data: \(error)")
+            }
+        }
+        task.resume()
+    }
+    
+    func setupWeatherLabel() {
+        weatherLabel.frame = CGRect(x: 20, y: 50, width: view.frame.width - 40, height: 50)
+        weatherLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        weatherLabel.textColor = .white
+        weatherLabel.textAlignment = .center
+        weatherLabel.layer.cornerRadius = 10
+        weatherLabel.clipsToBounds = true
+        view.addSubview(weatherLabel)
+    }
+    
 }

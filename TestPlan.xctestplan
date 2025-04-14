@@ -1,0 +1,21 @@
+{
+  "configurations" : [
+    {
+      "id" : "72D91F7A-FD78-47A4-B850-8249876A0D11",
+      "name" : "Configuration 1",
+      "options" : {
+        "locationScenario" : {
+          "identifier" : "New York, NY, USA",
+          "referenceType" : "built-in"
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}
