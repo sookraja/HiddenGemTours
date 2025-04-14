@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A726E3C2DAC7CE5006DC930 /* MapTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A726E3B2DAC7CE5006DC930 /* MapTableCell.swift */; };
 		1AE537A52DA7269100017CC4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE537A42DA7269100017CC4 /* MapKit.framework */; };
 		1AE537A72DA7269A00017CC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE537A62DA7269A00017CC4 /* CoreLocation.framework */; };
 		9C5C8B882DAB22E200870B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8B7E2DAB22E200870B1D /* Assets.xcassets */; };
@@ -20,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A726E3B2DAC7CE5006DC930 /* MapTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableCell.swift; sourceTree = "<group>"; };
 		1AE537422DA7221100017CC4 /* iOSFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE537A42DA7269100017CC4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1AE537A62DA7269A00017CC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -37,7 +35,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B4F425E52DAB428800DB1949 /* Classes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Classes; sourceTree = "<group>"; };
 		B4F425F52DAB47E600DB1949 /* ViewControllers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewControllers; sourceTree = "<group>"; };
-		B4F4261D2DACB7AC00DB1949 /* images */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = images; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +79,6 @@
 		9C5C8B872DAB22E200870B1D /* iOSFinalProject */ = {
 			isa = PBXGroup;
 			children = (
-				B4F4261D2DACB7AC00DB1949 /* images */,
 				B4F425F52DAB47E600DB1949 /* ViewControllers */,
 				B4F425E52DAB428800DB1949 /* Classes */,
 				9C5C8B7D2DAB22E200870B1D /* AppDelegate.swift */,
@@ -93,7 +89,6 @@
 				9C5C8B842DAB22E200870B1D /* Main.storyboard */,
 				9C5C8B852DAB22E200870B1D /* SceneDelegate.swift */,
 				B4F425F22DAB43AD00DB1949 /* TourDataModel.xcdatamodeld */,
-				1A726E3B2DAC7CE5006DC930 /* MapTableCell.swift */,
 			);
 			path = iOSFinalProject;
 			sourceTree = "<group>";
@@ -116,7 +111,6 @@
 			fileSystemSynchronizedGroups = (
 				B4F425E52DAB428800DB1949 /* Classes */,
 				B4F425F52DAB47E600DB1949 /* ViewControllers */,
-				B4F4261D2DACB7AC00DB1949 /* images */,
 			);
 			name = iOSFinalProject;
 			packageProductDependencies = (
@@ -178,7 +172,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C5C8B8C2DAB22E200870B1D /* AppDelegate.swift in Sources */,
-				1A726E3C2DAC7CE5006DC930 /* MapTableCell.swift in Sources */,
 				9C5C8B8D2DAB22E200870B1D /* InteractiveMapViewController.swift in Sources */,
 				B4F425F42DAB43AD00DB1949 /* TourDataModel.xcdatamodeld in Sources */,
 				9C5C8B8E2DAB22E200870B1D /* SceneDelegate.swift in Sources */,

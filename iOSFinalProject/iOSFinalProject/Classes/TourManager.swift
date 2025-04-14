@@ -13,15 +13,6 @@ import CoreData
 class TourManager {
 
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    func deleteTour(_ tour: TourEntity) {
-        context.delete(tour)
-        do {
-            try context.save()
-            print("🗑️ Tour deleted")
-        } catch {
-            print("❌ Failed to delete tour: \(error)")
-        }
-    }
 
     // Save a tour using [TourData]
     func saveTour(name: String, stops: [TourData]) {

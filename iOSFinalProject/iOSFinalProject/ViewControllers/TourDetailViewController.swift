@@ -7,167 +7,130 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
-class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class TourDetailViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tourNameLabel: UILabel!
+    @IBOutlet weak var stopsTextView: UITextView!
     @IBOutlet weak var beginTourButton: UIButton!
-    @IBOutlet weak var myTableView: UITableView!
 
-    var tourEntity: TourEntity!
+    var tourEntity: TourEntity?
     let tourManager = TourManager()
-    var tourStops: [TourData] = []
-    var firstCoord: CLLocationCoordinate2D!
-    var currentStopIndex = 0
-    
-  
-    let locationManager = CLLocationManager()
-    let regionRadius: CLLocationDistance = 550
-    var routeSteps  = [" "] as NSMutableArray
-    var distSteps =  [" "] as NSMutableArray
-    var detailSteps =  [" "] as NSMutableArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapView.delegate = self
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        
-
-        locationManager.requestWhenInUseAuthorization()
-        mapView.showsUserLocation = true
-        locationManager.startUpdatingLocation()
-    
         showTour()
     }
-    
-  
-    func calculateDirectionsToStop(stopIndex: Int) {
-        guard stopIndex < tourStops.count else { return }
-        currentStopIndex = stopIndex
-        
-        let stop = tourStops[stopIndex]
-        guard let stopLat = stop.latitude, let stopLong = stop.longitude else { return }
-        let stopCoordinates = CLLocationCoordinate2D(latitude: stopLat, longitude: stopLong)
-        
-        // Get user's current location
-        guard let userLocation = mapView.userLocation.location else { return }
-      
-        mapView.removeOverlays(mapView.overlays)
-        
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation.coordinate, addressDictionary: nil))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stopCoordinates, addressDictionary: nil))
-        request.requestsAlternateRoutes = false
-        request.transportType = .walking
-        
-        let directions = MKDirections(request: request)
-        directions.calculate(completionHandler: { [unowned self] response, error in
-            guard let response = response, let route = response.routes.first else {
-                print("Error calculating directions: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            
-            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
-            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            self.routeSteps.removeAllObjects()
-            self.distSteps.removeAllObjects()
-            
-            for step in route.steps {
-                self.routeSteps.add(step.instructions)
-                let d = step.distance
-                self.distSteps.add(String(format: "%.0f", d) + " m")
-                self.detailSteps.add(String(step.notice ?? "all clear"))
-            }
 
-            self.myTableView.reloadData()
-           
-        })
-    }
-    
- 
     func showTour() {
-        let stops = tourManager.decodeTourData(from: tourEntity!) ?? []
-        self.tourStops = stops
+        guard let tourEntity = tourEntity else {
+            print("❌ No tourEntity received")
+            return
+        }
 
-        tourNameLabel.text = tourEntity?.name ?? "Unnamed Tour"
-        title = tourEntity?.name ?? "Tour Details"
+        guard let stops = tourManager.decodeTourData(from: tourEntity) else {
+            print("❌ Failed to decode TourData from TourEntity")
+            return
+        }
+
+        print("✅ Decoded \(stops.count) stops")
+
+        tourNameLabel.text = tourEntity.name ?? "Unnamed Tour"
+        title = tourEntity.name ?? "Tour Details"
 
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
 
+        var stopText = ""
+        var firstCoord: CLLocationCoordinate2D?
+
         for (index, stop) in stops.enumerated() {
             guard let currentCoord = stop.coordinate() else {
+                print("⚠️ Stop \(index + 1) has no valid coordinates")
                 continue
             }
 
-            if index == 0 {
-                let region = MKCoordinateRegion(
-                    center: currentCoord,
-                    latitudinalMeters: 550,
-                    longitudinalMeters: 550
-                )
-                mapView.setRegion(region, animated: true)
-            }
+            if index == 0 { firstCoord = currentCoord }
 
             let annotation = MKPointAnnotation()
             annotation.title = stop.name
             annotation.subtitle = "Stop \(index + 1)"
             annotation.coordinate = currentCoord
             mapView.addAnnotation(annotation)
+
+            // Draw walking route to next stop
+            if index < stops.count - 1, let nextCoord = stops[index + 1].coordinate() {
+                drawCompleteTourRoute(stops)
+            }
+
+            stopText += "• \(stop.name ?? "Unnamed Stop")\n"
+        }
+
+        // ✅ Update the TextView
+        stopsTextView.text = stopText
+        stopsTextView.isEditable = false
+
+        // ✅ Zoom to first stop after a small delay
+        if let first = firstCoord {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let region = MKCoordinateRegion(center: first,
+                                                latitudinalMeters: 2000,
+                                                longitudinalMeters: 2000)
+                self.mapView.setRegion(region, animated: true)
+            }
+        } else {
+            print("⚠️ No valid first coordinate found for zoom")
         }
     }
 
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.red
-        renderer.lineWidth = 3.0
-        return renderer
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let annotation = view.annotation else { return }
-        
-        for (index, stop) in tourStops.enumerated() {
-            if let stopName = stop.name, stopName == annotation.title {
-                calculateDirectionsToStop(stopIndex: index)
-                break
+    func drawCompleteTourRoute(_ stops: [TourData]) {
+        guard stops.count > 1 else { return }
+
+        for i in 0..<stops.count - 1 {
+            guard let from = stops[i].coordinate(),
+                  let to = stops[i + 1].coordinate() else { continue }
+
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
+            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
+            request.transportType = .walking
+
+            let directions = MKDirections(request: request)
+            directions.calculate { response, error in
+                if let route = response?.routes.first {
+                    self.mapView.addOverlay(route.polyline)
+                } else {
+                    print("❌ Route segment \(i) failed: \(error?.localizedDescription ?? "Unknown error")")
+                }
             }
         }
     }
 
-    
-    @IBAction func nextStopTapped(_ sender: UIButton) {
-        let nextIndex = currentStopIndex + 1
-        if nextIndex < tourStops.count {
-            calculateDirectionsToStop(stopIndex: nextIndex)
-        }
-        else {
-            let alert = UIAlertController(title: "Tour Completed", message: "You have reached the end of the tour!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routeSteps.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "mapcell") as? MapTableCell ??
-        MapTableCell(style: .default, reuseIdentifier: "mapcell")
 
-        tableCell.instruction.text = routeSteps[indexPath.row] as? String
-        tableCell.distance.text = distSteps[indexPath.row] as? String
-        
-        return tableCell
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .systemBlue
+            renderer.lineWidth = 4
+            return renderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+
+    @IBAction func beginTourTapped(_ sender: UIButton) {
+        guard let stops = tourManager.decodeTourData(from: tourEntity!) else { return }
+
+        for (index, stop) in stops.enumerated() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 2.0) {
+                if let coord = stop.coordinate() {
+                    let region = MKCoordinateRegion(center: coord,
+                                                    latitudinalMeters: 1500,
+                                                    longitudinalMeters: 1500)
+                    self.mapView.setRegion(region, animated: true)
+                }
+            }
+        }
     }
 }
