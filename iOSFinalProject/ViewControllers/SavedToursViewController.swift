@@ -130,9 +130,38 @@ class SavedToursViewController: UIViewController {
         tour2Stop5.tourName = "Museum Tour"
         tour2Stop5.orderIndex = 4
         
+        let tour3Stop1 = TourData()
+        tour3Stop1.id = 11
+        tour2Stop5.name = "Round About"
+        tour2Stop5.latitude = 43.524871
+        tour2Stop5.longitude = -79.845133
+        tour2Stop5.tourId = 103
+        tour2Stop5.tourName = "Edgar's Location (Test)"
+        tour2Stop5.orderIndex = 0
+        
+        let tour3Stop2 = TourData()
+        tour3Stop1.id = 12
+        tour2Stop5.name = "Front"
+        tour2Stop5.latitude = 43.524657
+        tour2Stop5.longitude = -79.845706
+        tour2Stop5.tourId = 103
+        tour2Stop5.tourName = "Edgar's Location (Test)"
+        tour2Stop5.orderIndex = 1
+        
+        let tour3Stop3 = TourData()
+        tour3Stop1.id = 13
+        tour2Stop5.name = "Gate"
+        tour2Stop5.latitude = 43.524322
+        tour2Stop5.longitude = -79.845985
+        tour2Stop5.tourId = 103
+        tour2Stop5.tourName = "Edgar's Location (Test)"
+        tour2Stop5.orderIndex = 2
+        
+        
         // Save both tours
         tourManager.saveTour(name: "Downtown Toronto", stops: [tour1Stop1, tour1Stop2, tour1Stop3, tour1Stop4, tour1Stop5])
         tourManager.saveTour(name: "Museum Tour", stops: [tour2Stop1, tour2Stop2, tour2Stop3, tour2Stop4, tour2Stop5])
+        tourManager.saveTour(name: "Edgar's Location (Test)", stops: [tour3Stop1, tour3Stop2, tour3Stop3])
         
         print("tours with 5 stops each saved")
     }
