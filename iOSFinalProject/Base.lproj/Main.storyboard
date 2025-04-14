@@ -263,6 +263,12 @@
                                                 <segue destination="QDb-dM-ChF" kind="unwind" unwindAction="unwindToToursViewControllerWithSegue:" id="DWJ-iN-eZg"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.trianglehead.turn.up.right.diamond" catalog="system" id="L9D-jV-EeV">
+                                            <color key="tintColor" red="0.41568627450000001" green="0.49019607840000001" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="showDirectionsButtonTapped:" destination="cHD-ee-1FB" id="uAd-KM-HW8"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -453,6 +459,7 @@
         <image name="Sun-Background" width="1920" height="1200"/>
         <image name="Text" width="311" height="30"/>
         <image name="Text-2" width="99" height="13"/>
+        <image name="arrow.trianglehead.turn.up.right.diamond" catalog="system" width="128" height="124"/>
         <image name="arrowshape.left.fill" catalog="system" width="128" height="104"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>

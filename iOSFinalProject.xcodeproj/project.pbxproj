@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A767F5D2DACAD4D0046327A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A767F5C2DACAD4D0046327A /* SettingsViewController.swift */; };
+		1A767FB42DACBD1D0046327A /* DirectionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A767FB32DACBD1D0046327A /* DirectionsData.swift */; };
 		1AE537A52DA7269100017CC4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE537A42DA7269100017CC4 /* MapKit.framework */; };
 		1AE537A72DA7269A00017CC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE537A62DA7269A00017CC4 /* CoreLocation.framework */; };
 		9C5C8BE52DAC943600870B1D /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BCD2DAC943600870B1D /* FilterManager.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1A767F5C2DACAD4D0046327A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1A767FB32DACBD1D0046327A /* DirectionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsData.swift; sourceTree = "<group>"; };
 		1AE537422DA7221100017CC4 /* iOSFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE537A42DA7269100017CC4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1AE537A62DA7269A00017CC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -102,6 +104,7 @@
 				9C5C8BD02DAC943600870B1D /* TourCell.swift */,
 				9C5C8BD12DAC943600870B1D /* TourData.swift */,
 				9C5C8BD22DAC943600870B1D /* TourManager.swift */,
+				1A767FB32DACBD1D0046327A /* DirectionsData.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				9C5C8BE72DAC943600870B1D /* SearchManager.swift in Sources */,
 				9C5C8BE82DAC943600870B1D /* TourCell.swift in Sources */,
 				9C5C8BE92DAC943600870B1D /* TourData.swift in Sources */,
+				1A767FB42DACBD1D0046327A /* DirectionsData.swift in Sources */,
 				9C5C8BEA2DAC943600870B1D /* TourManager.swift in Sources */,
 				9C5C8BEB2DAC943600870B1D /* SavedToursViewController.swift in Sources */,
 				9C5C8BEC2DAC943600870B1D /* TourDetailViewController.swift in Sources */,

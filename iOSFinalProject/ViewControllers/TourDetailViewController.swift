@@ -27,7 +27,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     let regionRadius: CLLocationDistance = 550
     var routeSteps  = [" "] as NSMutableArray
     var distSteps =  [" "] as NSMutableArray
-    var detailSteps =  [" "] as NSMutableArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +78,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
                 self.routeSteps.add(step.instructions)
                 let d = step.distance
                 self.distSteps.add(String(format: "%.0f", d) + " m")
-                self.detailSteps.add(String(step.notice ?? "all clear"))
             }
 
             self.myTableView.reloadData()
@@ -169,4 +167,5 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         
         return tableCell
     }
+    
 }
