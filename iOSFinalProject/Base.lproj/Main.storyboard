@@ -53,7 +53,8 @@
                                     <color key="baseBackgroundColor" red="0.41568627450000001" green="0.49019607840000001" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BkM-pd-ut1" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="bQ7-wq-is7"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nxl-Wh-C4e"/>
+                                    <segue destination="ruy-fm-SGu" kind="presentation" identifier="login" id="mTN-xR-Kdn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se0-Cb-nYA">
@@ -63,6 +64,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Register">
                                     <color key="baseBackgroundColor" red="0.41568627450000001" green="0.49019607840000001" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3DF-8g-lzy"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Text-2" translatesAutoresizingMaskIntoConstraints="NO" id="dy2-q9-gal">
                                 <rect key="frame" x="144" y="531" width="105" height="22"/>
@@ -88,70 +92,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="DKX-2J-089" id="dzq-U8-6Rk"/>
+                        <outlet property="msg" destination="FKm-KL-Nc1" id="osI-s5-EnU"/>
+                        <outlet property="passwordTextField" destination="kHr-yk-2T8" id="26Z-iB-446"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1547" y="-1"/>
-        </scene>
-        <!--Interactive Map View Controller-->
-        <scene sceneID="g8F-Nb-V5V">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BkM-pd-ut1" customClass="InteractiveMapViewController" customModule="iOSFinalProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uTy-Tg-hSK">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="giI-Vj-Ffb">
-                                <rect key="frame" x="0.0" y="115" width="393" height="520"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BkM-pd-ut1" id="mCa-od-GbM"/>
-                                </connections>
-                            </mapView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JkH-k0-3e1">
-                                <rect key="frame" x="0.0" y="45" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.21568074819999999" green="0.2352955639" blue="0.27450728419999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <textAttributes key="largeTitleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Interactive Map" id="pZu-D0-XsU">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrowshape.left.fill" catalog="system" id="S5W-hM-cTE">
-                                            <color key="tintColor" red="0.41568627450000001" green="0.49019607840000001" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <connections>
-                                                <segue destination="jlf-vd-2ct" kind="unwind" unwindAction="unwindToHomeViewControllerWithSegue:" id="6xV-1t-x7k"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNZ-h6-Loz">
-                                <rect key="frame" x="133" y="701" width="127" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.41568624970000001" green="0.49019610879999997" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Select Tours"/>
-                                <connections>
-                                    <segue destination="ruy-fm-SGu" kind="presentation" id="CFP-8O-4Ih"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gCI-k5-QMm"/>
-                        <color key="backgroundColor" red="0.12136665731668472" green="0.087050698697566986" blue="0.16079100966453552" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <outlet property="myMapView" destination="giI-Vj-Ffb" id="qOq-1v-Kdo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fD8-TD-ha0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="jlf-vd-2ct" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="-440.45801526717554" y="-1.4084507042253522"/>
+            <point key="canvasLocation" x="-251" y="-1"/>
         </scene>
         <!--Saved Tours View Controller-->
         <scene sceneID="H5z-A6-2wp">
@@ -332,7 +281,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edL-hy-rzX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edL-hy-rzX">
                                 <rect key="frame" x="16" y="133" width="292" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.41568624970000001" green="0.49019610879999997" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -18,6 +18,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     @IBOutlet weak var weatherLabel: UILabel!
     let locationManager = CLLocationManager()
     
+    var hasShownTour = false
     var tourEntity: TourEntity!
     let tourManager = TourManager()
     var tourStops: [TourData] = []
@@ -42,7 +43,15 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
         locationManager.startUpdatingLocation()
-        showTour()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if !hasShownTour {
+            hasShownTour = true
+            showTour()
+        }
     }
     
     
