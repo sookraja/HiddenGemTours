@@ -3,6 +3,7 @@
 //  iOSFinalProject
 //
 //  Created by Carlos Castro on 2025-04-12.
+//  Edited by Edgar for core location,mapkit but navigation really/data of locations. also did the UIs
 //
 
 import UIKit
@@ -13,7 +14,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tourNameLabel: UILabel!
-    @IBOutlet weak var beginTourButton: UIButton!
     @IBOutlet weak var myTableView: UITableView!
 
     var tourEntity: TourEntity!
@@ -53,7 +53,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         guard let stopLat = stop.latitude, let stopLong = stop.longitude else { return }
         let stopCoordinates = CLLocationCoordinate2D(latitude: stopLat, longitude: stopLong)
         
-        // Get user's current location
         guard let userLocation = mapView.userLocation.location else { return }
       
         mapView.removeOverlays(mapView.overlays)
