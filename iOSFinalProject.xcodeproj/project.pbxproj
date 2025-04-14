@@ -29,6 +29,14 @@
 		9C5C8BF62DAC943600870B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8BDF2DAC943600870B1D /* Main.storyboard */; };
 		9C5C8BFA2DAC95D500870B1D /* WeatherAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BF92DAC95D500870B1D /* WeatherAPIResponse.swift */; };
 		9C5C8C032DACB79600870B1D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8C022DACB79600870B1D /* WeatherViewController.swift */; };
+		9C7D7BB72DAD9A33007F0541 /* DirectionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D7BB42DAD9A33007F0541 /* DirectionsData.swift */; };
+		9C7D7BB82DAD9A33007F0541 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D7BB52DAD9A33007F0541 /* UserModel.swift */; };
+		9C7D7BB92DAD9A33007F0541 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D7BB62DAD9A33007F0541 /* Validator.swift */; };
+		9C7D7BBB2DAD9A57007F0541 /* CityFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D7BBA2DAD9A57007F0541 /* CityFactsViewController.swift */; };
+		9C7D7BBD2DAD9D93007F0541 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C7D7BBC2DAD9D93007F0541 /* GoogleService-Info.plist */; };
+		9C7D7BC02DADB3B9007F0541 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9C7D7BBF2DADB3B9007F0541 /* FirebaseAnalytics */; };
+		9C7D7BC22DADB3B9007F0541 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9C7D7BC12DADB3B9007F0541 /* FirebaseAuth */; };
+		9C7D7BC42DADB3B9007F0541 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9C7D7BC32DADB3B9007F0541 /* FirebaseCore */; };
 		9CAC526F2DACDCF4007E07F8 /* HelpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC526E2DACDCF4007E07F8 /* HelpScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +66,11 @@
 		9C5C8BF92DAC95D500870B1D /* WeatherAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIResponse.swift; sourceTree = "<group>"; };
 		9C5C8BFD2DACAC1800870B1D /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		9C5C8C022DACB79600870B1D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		9C7D7BB42DAD9A33007F0541 /* DirectionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsData.swift; sourceTree = "<group>"; };
+		9C7D7BB52DAD9A33007F0541 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9C7D7BB62DAD9A33007F0541 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		9C7D7BBA2DAD9A57007F0541 /* CityFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFactsViewController.swift; sourceTree = "<group>"; };
+		9C7D7BBC2DAD9D93007F0541 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CAC526E2DACDCF4007E07F8 /* HelpScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +80,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AE537A72DA7269A00017CC4 /* CoreLocation.framework in Frameworks */,
+				9C7D7BC42DADB3B9007F0541 /* FirebaseCore in Frameworks */,
 				1AE537A52DA7269100017CC4 /* MapKit.framework in Frameworks */,
+				9C7D7BC02DADB3B9007F0541 /* FirebaseAnalytics in Frameworks */,
+				9C7D7BC22DADB3B9007F0541 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +120,9 @@
 		9C5C8BD32DAC943600870B1D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9C7D7BB42DAD9A33007F0541 /* DirectionsData.swift */,
+				9C7D7BB52DAD9A33007F0541 /* UserModel.swift */,
+				9C7D7BB62DAD9A33007F0541 /* Validator.swift */,
 				9C5C8BCD2DAC943600870B1D /* FilterManager.swift */,
 				9C5C8BCE2DAC943600870B1D /* POI.swift */,
 				9C5C8BCF2DAC943600870B1D /* SearchManager.swift */,
@@ -118,6 +137,7 @@
 		9C5C8BD72DAC943600870B1D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C7D7BBA2DAD9A57007F0541 /* CityFactsViewController.swift */,
 				9C5C8BD42DAC943600870B1D /* SavedToursViewController.swift */,
 				9C5C8BD52DAC943600870B1D /* TourDetailViewController.swift */,
 				9C5C8BD62DAC943600870B1D /* ViewController.swift */,
@@ -131,6 +151,7 @@
 		9C5C8BE32DAC943600870B1D /* iOSFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				9C7D7BBC2DAD9D93007F0541 /* GoogleService-Info.plist */,
 				9C5C8BD32DAC943600870B1D /* Classes */,
 				9C5C8BD72DAC943600870B1D /* ViewControllers */,
 				9C5C8BD82DAC943600870B1D /* AppDelegate.swift */,
@@ -163,6 +184,9 @@
 			);
 			name = iOSFinalProject;
 			packageProductDependencies = (
+				9C7D7BBF2DADB3B9007F0541 /* FirebaseAnalytics */,
+				9C7D7BC12DADB3B9007F0541 /* FirebaseAuth */,
+				9C7D7BC32DADB3B9007F0541 /* FirebaseCore */,
 			);
 			productName = iOSFinalProject;
 			productReference = 1AE537422DA7221100017CC4 /* iOSFinalProject.app */;
@@ -193,6 +217,9 @@
 			);
 			mainGroup = 1AE537392DA7221000017CC4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9C7D7BBE2DADB3B9007F0541 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 1AE537432DA7221100017CC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C5C8BF32DAC943600870B1D /* Assets.xcassets in Resources */,
+				9C7D7BBD2DAD9D93007F0541 /* GoogleService-Info.plist in Resources */,
 				9C5C8BF52DAC943600870B1D /* LaunchScreen.storyboard in Resources */,
 				9C5C8BF62DAC943600870B1D /* Main.storyboard in Resources */,
 			);
@@ -231,6 +259,10 @@
 				9C5C8BEC2DAC943600870B1D /* TourDetailViewController.swift in Sources */,
 				1A767F5D2DACAD4D0046327A /* SettingsViewController.swift in Sources */,
 				9C5C8BED2DAC943600870B1D /* ViewController.swift in Sources */,
+				9C7D7BB72DAD9A33007F0541 /* DirectionsData.swift in Sources */,
+				9C7D7BB82DAD9A33007F0541 /* UserModel.swift in Sources */,
+				9C7D7BBB2DAD9A57007F0541 /* CityFactsViewController.swift in Sources */,
+				9C7D7BB92DAD9A33007F0541 /* Validator.swift in Sources */,
 				9CAC526F2DACDCF4007E07F8 /* HelpScreenViewController.swift in Sources */,
 				9C5C8BEE2DAC943600870B1D /* AppDelegate.swift in Sources */,
 				9C5C8BEF2DAC943600870B1D /* InteractiveMapViewController.swift in Sources */,
@@ -268,6 +300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5U83AY3T64;
@@ -277,8 +310,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -286,6 +319,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iOSDev.iOSFinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -297,6 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5U83AY3T64;
@@ -306,8 +341,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,6 +350,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iOSDev.iOSFinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,6 +498,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9C7D7BBE2DADB3B9007F0541 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 11.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9C7D7BBF2DADB3B9007F0541 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C7D7BBE2DADB3B9007F0541 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		9C7D7BC12DADB3B9007F0541 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C7D7BBE2DADB3B9007F0541 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		9C7D7BC32DADB3B9007F0541 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C7D7BBE2DADB3B9007F0541 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9C5C8BE22DAC943600870B1D /* TourDataModel.xcdatamodeld */ = {

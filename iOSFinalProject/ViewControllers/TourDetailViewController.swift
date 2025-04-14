@@ -11,13 +11,13 @@ import MapKit
 import CoreLocation
 
 class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tourNameLabel: UILabel!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var weatherLabel: UILabel!
     let locationManager = CLLocationManager()
-
+    
     var tourEntity: TourEntity!
     let tourManager = TourManager()
     var tourStops: [TourData] = []
@@ -28,9 +28,9 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     var routeSteps  = [" "] as NSMutableArray
     var distSteps =  [" "] as NSMutableArray
     var detailSteps =  [" "] as NSMutableArray
-
+    
     var selectedCity: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,14 +38,14 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         myTableView.delegate = self
         myTableView.dataSource = self
         
-
+        
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
         locationManager.startUpdatingLocation()
         showTour()
     }
     
-  
+    
     func calculateDirectionsToStop(stopIndex: Int) {
         guard stopIndex < tourStops.count else { return }
         currentStopIndex = stopIndex
@@ -59,7 +59,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         
         // Get user's current location
         guard let userLocation = mapView.userLocation.location else { return }
-      
+        
         mapView.removeOverlays(mapView.overlays)
         
         let request = MKDirections.Request()
@@ -86,125 +86,161 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
                 self.distSteps.add(String(format: "%.0f", d) + " m")
                 self.detailSteps.add(String(step.notice ?? "all clear"))
             }
-
+            
             self.myTableView.reloadData()
-           
+            
         })
     }
     
- 
+    
     func showTour() {
-        let stops = tourManager.decodeTourData(from: tourEntity!) ?? []
-        self.tourStops = stops
-
-        tourNameLabel.text = tourEntity?.name ?? "Unnamed Tour"
-        title = tourEntity?.name ?? "Tour Details"
-
+        guard let tourEntity = tourEntity else {
+            print("❌ No tourEntity received")
+            return
+        }
+        
+        guard let stops = tourManager.decodeTourData(from: tourEntity) else {
+            print("❌ Failed to decode TourData from TourEntity")
+            return
+        }
+        
+        print("✅ Decoded \(stops.count) stops")
+        
+        tourNameLabel.text = tourEntity.name ?? "Unnamed Tour"
+        title = tourEntity.name ?? "Tour Details"
+        
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
-
+        
+        var stopText = ""
+        var firstCoord: CLLocationCoordinate2D?
+        
         for (index, stop) in stops.enumerated() {
             guard let currentCoord = stop.coordinate() else {
+                print("⚠️ Stop \(index + 1) has no valid coordinates")
                 continue
             }
-
-            if index == 0 {
-                let region = MKCoordinateRegion(
-                    center: currentCoord,
-                    latitudinalMeters: 550,
-                    longitudinalMeters: 550
-                )
-                mapView.setRegion(region, animated: true)
-            }
-
+            
+            if index == 0 { firstCoord = currentCoord }
+            
             let annotation = MKPointAnnotation()
             annotation.title = stop.name
             annotation.subtitle = "Stop \(index + 1)"
             annotation.coordinate = currentCoord
             mapView.addAnnotation(annotation)
-        }
-    }
-
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.red
-        renderer.lineWidth = 3.0
-        return renderer
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let annotation = view.annotation else { return }
-
-        if let cityName = view.annotation?.title {
-            self.selectedCity = cityName
-        }
-        
-        for (index, stop) in tourStops.enumerated() {
-            if let stopName = stop.name, stopName == annotation.title {
-                calculateDirectionsToStop(stopIndex: index)
-                break
+            
+            // Draw walking route to next stop
+            if index < stops.count - 1, let nextCoord = stops[index + 1].coordinate() {
+                drawCompleteTourRoute(stops)
             }
-        }
-    }
-
-    
-    @IBAction func nextStopTapped(_ sender: UIButton) {
-        let nextIndex = currentStopIndex + 1
-        if nextIndex < tourStops.count {
-            calculateDirectionsToStop(stopIndex: nextIndex)
-        }
-        else {
-            let alert = UIAlertController(title: "Tour Completed", message: "You have reached the end of the tour!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+            
+            stopText += "• \(stop.name ?? "Unnamed Stop")\n"
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routeSteps.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "mapcell") as? MapTableCell ??
-        MapTableCell(style: .default, reuseIdentifier: "mapcell")
+    func drawCompleteTourRoute(_ stops: [TourData]) {
+        guard stops.count > 1 else { return }
 
-        tableCell.instruction.text = routeSteps[indexPath.row] as? String
-        tableCell.distance.text = distSteps[indexPath.row] as? String
-        
-        return tableCell
-    }
-    
-    // WeatherKit Implementation:
-    
-    func fetchWeather(lat: Double, long: Double) {
-        let apiKey = "35d5aa775f94458ebb2221915250504"
-        let urlString = "https://api.weatherapi.com/v1/current.json?key=\(apiKey)&q=\(lat),\(long)"
+        for i in 0..<stops.count - 1 {
+            guard let from = stops[i].coordinate(),
+                  let to = stops[i + 1].coordinate() else { continue }
 
-        guard let url = URL(string: urlString) else { return }
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
+            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
+            request.transportType = .walking
 
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else { return }
-
-            do {
-                let weatherData = try JSONDecoder().decode(WeatherAPIResponse.self, from: data)
-                DispatchQueue.main.async {
-                    self.weatherLabel.text = "\(weatherData.current.temp_c)°C - \(weatherData.current.condition.text)"
+            let directions = MKDirections(request: request)
+            directions.calculate { response, error in
+                if let route = response?.routes.first {
+                    self.mapView.addOverlay(route.polyline)
+                } else {
+                    print("❌ Route segment \(i) failed: \(error?.localizedDescription ?? "Unknown error")")
                 }
-            } catch {
-                print("Failed to decode WeatherAPI data: \(error)")
             }
         }
-        task.resume()
     }
+
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+            renderer.strokeColor = UIColor.red
+            renderer.lineWidth = 3.0
+            return renderer
+        }
         
-    @IBAction func unwindToTourDetailViewController(segue: UIStoryboardSegue)
-    {
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            guard let annotation = view.annotation else { return }
+            
+            if let cityName = view.annotation?.title {
+                self.selectedCity = cityName
+            }
+            
+            for (index, stop) in tourStops.enumerated() {
+                if let stopName = stop.name, stopName == annotation.title {
+                    calculateDirectionsToStop(stopIndex: index)
+                    break
+                }
+            }
+        }
+        
+        
+        @IBAction func nextStopTapped(_ sender: UIButton) {
+            let nextIndex = currentStopIndex + 1
+            if nextIndex < tourStops.count {
+                calculateDirectionsToStop(stopIndex: nextIndex)
+            }
+            else {
+                let alert = UIAlertController(title: "Tour Completed", message: "You have reached the end of the tour!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
+            }
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return routeSteps.count
+        }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 90
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let tableCell = tableView.dequeueReusableCell(withIdentifier: "mapcell") as? MapTableCell ??
+            MapTableCell(style: .default, reuseIdentifier: "mapcell")
+            
+            tableCell.instruction.text = routeSteps[indexPath.row] as? String
+            tableCell.distance.text = distSteps[indexPath.row] as? String
+            
+            return tableCell
+        }
+        
+        // WeatherKit Implementation:
+        
+        func fetchWeather(lat: Double, long: Double) {
+            let apiKey = "35d5aa775f94458ebb2221915250504"
+            let urlString = "https://api.weatherapi.com/v1/current.json?key=\(apiKey)&q=\(lat),\(long)"
+            
+            guard let url = URL(string: urlString) else { return }
+            
+            let task = URLSession.shared.dataTask(with: url) { data, _, error in
+                guard let data = data, error == nil else { return }
+                
+                do {
+                    let weatherData = try JSONDecoder().decode(WeatherAPIResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.weatherLabel.text = "\(weatherData.current.temp_c)°C - \(weatherData.current.condition.text)"
+                    }
+                } catch {
+                    print("Failed to decode WeatherAPI data: \(error)")
+                }
+            }
+            task.resume()
+        }
+        
+        @IBAction func unwindToTourDetailViewController(segue: UIStoryboardSegue)
+        {
+            
+        }
         
     }
-    
-}
+
