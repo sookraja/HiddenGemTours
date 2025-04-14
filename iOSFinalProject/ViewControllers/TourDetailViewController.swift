@@ -3,6 +3,7 @@
 //  iOSFinalProject
 //
 //  Created by Carlos Castro on 2025-04-12.
+//  Edited by Edgar for core location,mapkit but navigation really/data of locations. also did the UIs
 //
 
 import UIKit
@@ -13,7 +14,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tourNameLabel: UILabel!
-    @IBOutlet weak var beginTourButton: UIButton!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var weatherLabel: UILabel!
     let locationManager = CLLocationManager()

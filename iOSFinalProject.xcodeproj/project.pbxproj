@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A767F5D2DACAD4D0046327A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A767F5C2DACAD4D0046327A /* SettingsViewController.swift */; };
 		1AE537A52DA7269100017CC4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE537A42DA7269100017CC4 /* MapKit.framework */; };
 		1AE537A72DA7269A00017CC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE537A62DA7269A00017CC4 /* CoreLocation.framework */; };
 		9C5C8BE52DAC943600870B1D /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BCD2DAC943600870B1D /* FilterManager.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A767F5C2DACAD4D0046327A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1AE537422DA7221100017CC4 /* iOSFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE537A42DA7269100017CC4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1AE537A62DA7269A00017CC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -118,6 +120,7 @@
 				9C5C8BD52DAC943600870B1D /* TourDetailViewController.swift */,
 				9C5C8BD62DAC943600870B1D /* ViewController.swift */,
 				9C5C8C022DACB79600870B1D /* WeatherViewController.swift */,
+				1A767F5C2DACAD4D0046327A /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				9C5C8BEA2DAC943600870B1D /* TourManager.swift in Sources */,
 				9C5C8BEB2DAC943600870B1D /* SavedToursViewController.swift in Sources */,
 				9C5C8BEC2DAC943600870B1D /* TourDetailViewController.swift in Sources */,
+				1A767F5D2DACAD4D0046327A /* SettingsViewController.swift in Sources */,
 				9C5C8BED2DAC943600870B1D /* ViewController.swift in Sources */,
 				9C5C8BEE2DAC943600870B1D /* AppDelegate.swift in Sources */,
 				9C5C8BEF2DAC943600870B1D /* InteractiveMapViewController.swift in Sources */,
@@ -262,7 +266,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 5U83AY3T64;
+=======
+				DEVELOPMENT_TEAM = 826S96693G;
+>>>>>>> 542c7cf (Changes)
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSFinalProject/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show you on the map and provide directions.";
@@ -291,7 +299,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 5U83AY3T64;
+=======
+				DEVELOPMENT_TEAM = 826S96693G;
+>>>>>>> 542c7cf (Changes)
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSFinalProject/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show you on the map and provide directions.";

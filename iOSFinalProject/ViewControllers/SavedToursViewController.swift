@@ -39,6 +39,11 @@ class SavedToursViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToToursViewController(segue: UIStoryboardSegue)
+    {
+        
+    }
+    
     func addTours() {
         let tour1Stop1 = TourData()
         tour1Stop1.id = 1
@@ -132,36 +137,53 @@ class SavedToursViewController: UIViewController {
         
         let tour3Stop1 = TourData()
         tour3Stop1.id = 11
-        tour2Stop5.name = "Round About"
-        tour2Stop5.latitude = 43.524871
-        tour2Stop5.longitude = -79.845133
-        tour2Stop5.tourId = 103
-        tour2Stop5.tourName = "Edgar's Location (Test)"
-        tour2Stop5.orderIndex = 0
-        
+        tour3Stop1.name = "Round About"
+        tour3Stop1.latitude = 43.524871
+        tour3Stop1.longitude = -79.845133
+        tour3Stop1.tourId = 103
+        tour3Stop1.tourName = "Edgar's Location (Test)"
+        tour3Stop1.orderIndex = 0
+
         let tour3Stop2 = TourData()
-        tour3Stop1.id = 12
-        tour2Stop5.name = "Front"
-        tour2Stop5.latitude = 43.524657
-        tour2Stop5.longitude = -79.845706
-        tour2Stop5.tourId = 103
-        tour2Stop5.tourName = "Edgar's Location (Test)"
-        tour2Stop5.orderIndex = 1
-        
+        tour3Stop2.id = 12
+        tour3Stop2.name = "Front"
+        tour3Stop2.latitude = 43.524657
+        tour3Stop2.longitude = -79.845706
+        tour3Stop2.tourId = 103
+        tour3Stop2.tourName = "Edgar's Location (Test)"
+        tour3Stop2.orderIndex = 1
+
         let tour3Stop3 = TourData()
-        tour3Stop1.id = 13
-        tour2Stop5.name = "Gate"
-        tour2Stop5.latitude = 43.524322
-        tour2Stop5.longitude = -79.845985
-        tour2Stop5.tourId = 103
-        tour2Stop5.tourName = "Edgar's Location (Test)"
-        tour2Stop5.orderIndex = 2
+        tour3Stop3.id = 13
+        tour3Stop3.name = "drop 3"
+        tour3Stop3.latitude = 43.524305
+        tour3Stop3.longitude = -79.845976
+        tour3Stop3.tourId = 103
+        tour3Stop3.tourName = "Edgar's Location (Test)"
+        tour3Stop3.orderIndex = 2
+
+        let tour3Stop4 = TourData()
+        tour3Stop4.id = 14
+        tour3Stop4.name = "drop 4"
+        tour3Stop4.latitude = 43.524030
+        tour3Stop4.longitude = -79.846328
+        tour3Stop4.tourId = 103
+        tour3Stop4.tourName = "Edgar's Location (Test)"
+        tour3Stop4.orderIndex = 3
         
+        let tour3Stop5 = TourData()
+        tour3Stop5.id = 15
+        tour3Stop5.name = "drop 5"
+        tour3Stop5.latitude = 43.524467
+        tour3Stop5.longitude = -79.846902
+        tour3Stop5.tourId = 103
+        tour3Stop5.tourName = "Edgar's Location (Test)"
+        tour3Stop5.orderIndex = 4
         
         // Save both tours
         tourManager.saveTour(name: "Downtown Toronto", stops: [tour1Stop1, tour1Stop2, tour1Stop3, tour1Stop4, tour1Stop5])
         tourManager.saveTour(name: "Museum Tour", stops: [tour2Stop1, tour2Stop2, tour2Stop3, tour2Stop4, tour2Stop5])
-        tourManager.saveTour(name: "Edgar's Location (Test)", stops: [tour3Stop1, tour3Stop2, tour3Stop3])
+        tourManager.saveTour(name: "Edgar's Location (Test)", stops: [tour3Stop1, tour3Stop2, tour3Stop3, tour3Stop4, tour3Stop5])
         
         print("tours with 5 stops each saved")
     }
