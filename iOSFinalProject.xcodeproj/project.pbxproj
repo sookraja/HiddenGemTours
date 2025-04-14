@@ -27,6 +27,7 @@
 		9C5C8BF52DAC943600870B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8BDD2DAC943600870B1D /* LaunchScreen.storyboard */; };
 		9C5C8BF62DAC943600870B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8BDF2DAC943600870B1D /* Main.storyboard */; };
 		9C5C8BFA2DAC95D500870B1D /* WeatherAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BF92DAC95D500870B1D /* WeatherAPIResponse.swift */; };
+		9C5C8C032DACB79600870B1D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8C022DACB79600870B1D /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		9C5C8BE42DAC943600870B1D /* TourDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TourDataModel.xcdatamodel; sourceTree = "<group>"; };
 		9C5C8BF92DAC95D500870B1D /* WeatherAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIResponse.swift; sourceTree = "<group>"; };
 		9C5C8BFD2DACAC1800870B1D /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		9C5C8C022DACB79600870B1D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				9C5C8BD42DAC943600870B1D /* SavedToursViewController.swift */,
 				9C5C8BD52DAC943600870B1D /* TourDetailViewController.swift */,
 				9C5C8BD62DAC943600870B1D /* ViewController.swift */,
+				9C5C8C022DACB79600870B1D /* WeatherViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				9C5C8BE72DAC943600870B1D /* SearchManager.swift in Sources */,
 				9C5C8BE82DAC943600870B1D /* TourCell.swift in Sources */,
 				9C5C8BE92DAC943600870B1D /* TourData.swift in Sources */,
+				9C5C8C032DACB79600870B1D /* WeatherViewController.swift in Sources */,
 				9C5C8BEA2DAC943600870B1D /* TourManager.swift in Sources */,
 				9C5C8BEB2DAC943600870B1D /* SavedToursViewController.swift in Sources */,
 				9C5C8BEC2DAC943600870B1D /* TourDetailViewController.swift in Sources */,
