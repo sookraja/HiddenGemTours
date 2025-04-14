@@ -29,6 +29,8 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     var distSteps =  [" "] as NSMutableArray
     var detailSteps =  [" "] as NSMutableArray
 
+    var selectedCity: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,6 +133,10 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation else { return }
+
+        if let cityName = view.annotation?.title {
+            self.selectedCity = cityName
+        }
         
         for (index, stop) in tourStops.enumerated() {
             if let stopName = stop.name, stopName == annotation.title {
