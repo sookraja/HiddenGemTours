@@ -3,6 +3,7 @@
 //  iOSFinalProject
 //
 //  Created by Carlos Castro on 2025-04-12.
+//  Secondary Author: Edgar Ponce
 //
 
 

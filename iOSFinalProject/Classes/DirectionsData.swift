@@ -3,7 +3,7 @@
 //  iOSFinalProject
 //
 //  Created by Edgar Ponce on 2025-04-13.
-//
+// This was my attempt to make a directions view controller and i couldnt get to it
 
 import UIKit
 
