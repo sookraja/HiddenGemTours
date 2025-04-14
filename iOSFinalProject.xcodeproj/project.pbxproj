@@ -267,10 +267,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 5U83AY3T64;
 =======
 				DEVELOPMENT_TEAM = 826S96693G;
 >>>>>>> 542c7cf (Changes)
+=======
+				DEVELOPMENT_TEAM = 826S96693G;
+=======
+				DEVELOPMENT_TEAM = 5U83AY3T64;
+>>>>>>> b411fad (adding weatherkit implementation)
+>>>>>>> e0a52e2 (adding weatherkit implementation)
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSFinalProject/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show you on the map and provide directions.";
@@ -299,11 +306,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 5U83AY3T64;
-=======
-				DEVELOPMENT_TEAM = 826S96693G;
->>>>>>> 542c7cf (Changes)
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSFinalProject/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show you on the map and provide directions.";
