@@ -3,7 +3,7 @@
 //  iOSFinalProject
 //
 //  Created by Carlos Castro on 2025-04-12.
-//  Edited by Edgar for core location,mapkit but data of locations was carlos. also did the UIs
+//  Edited by Edgar for core location,mapkit but navigation really/data of locations. also did the UIs
 //
 
 import UIKit
@@ -30,7 +30,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
         locationManager.startUpdatingLocation()
@@ -51,7 +51,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation.coordinate, addressDictionary: nil))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stopCoordinates,addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stopCoordinates, addressDictionary: nil))
         request.requestsAlternateRoutes = false
         request.transportType = .walking
         
@@ -61,19 +61,21 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
             
             self.mapView.addOverlay(route.polyline, level: .aboveRoads)
             self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+            
             self.routeSteps.removeAllObjects()
             self.distSteps.removeAllObjects()
-          
+    
+            
             for step in route.steps {
                 self.routeSteps.add(step.instructions)
                 let d = step.distance
                 self.distSteps.add(String(format: "%.0f", d) + " m")
+              
             }
 
             self.myTableView.reloadData()
         })
     }
-    
  
     func showTour() {
         let stops = tourManager.decodeTourData(from: tourEntity!) ?? []
@@ -126,6 +128,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         }
     }
 
+    
     @IBAction func nextStopTapped(_ sender: UIButton) {
         let nextIndex = currentStopIndex + 1
         if nextIndex < tourStops.count {
