@@ -40,7 +40,6 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
         locationManager.startUpdatingLocation()
-        setupWeatherLabel()
         showTour()
     }
     
@@ -196,15 +195,10 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         }
         task.resume()
     }
-    
-    func setupWeatherLabel() {
-        weatherLabel.frame = CGRect(x: 20, y: 50, width: view.frame.width - 40, height: 50)
-        weatherLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        weatherLabel.textColor = .white
-        weatherLabel.textAlignment = .center
-        weatherLabel.layer.cornerRadius = 10
-        weatherLabel.clipsToBounds = true
-        view.addSubview(weatherLabel)
+        
+    @IBAction func unwindToTourDetailViewController(segue: UIStoryboardSegue)
+    {
+        
     }
     
 }

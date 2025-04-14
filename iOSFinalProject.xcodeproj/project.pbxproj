@@ -29,6 +29,7 @@
 		9C5C8BF62DAC943600870B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8BDF2DAC943600870B1D /* Main.storyboard */; };
 		9C5C8BFA2DAC95D500870B1D /* WeatherAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BF92DAC95D500870B1D /* WeatherAPIResponse.swift */; };
 		9C5C8C032DACB79600870B1D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8C022DACB79600870B1D /* WeatherViewController.swift */; };
+		9CAC526F2DACDCF4007E07F8 /* HelpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC526E2DACDCF4007E07F8 /* HelpScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		9C5C8BF92DAC95D500870B1D /* WeatherAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIResponse.swift; sourceTree = "<group>"; };
 		9C5C8BFD2DACAC1800870B1D /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		9C5C8C022DACB79600870B1D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		9CAC526E2DACDCF4007E07F8 /* HelpScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				9C5C8BD62DAC943600870B1D /* ViewController.swift */,
 				1A767F5C2DACAD4D0046327A /* SettingsViewController.swift */,
 				9C5C8C022DACB79600870B1D /* WeatherViewController.swift */,
+				9CAC526E2DACDCF4007E07F8 /* HelpScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				9C5C8BEC2DAC943600870B1D /* TourDetailViewController.swift in Sources */,
 				1A767F5D2DACAD4D0046327A /* SettingsViewController.swift in Sources */,
 				9C5C8BED2DAC943600870B1D /* ViewController.swift in Sources */,
+				9CAC526F2DACDCF4007E07F8 /* HelpScreenViewController.swift in Sources */,
 				9C5C8BEE2DAC943600870B1D /* AppDelegate.swift in Sources */,
 				9C5C8BEF2DAC943600870B1D /* InteractiveMapViewController.swift in Sources */,
 				9C5C8BF02DAC943600870B1D /* MapTableCell.swift in Sources */,

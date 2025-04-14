@@ -18,26 +18,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
         setupMapView()
-        setupWeatherLabel()
         configureLocationManager()
     }
 
     func setupMapView() {
+        weatherLabel.layer.cornerRadius = 10
         mapView.frame = view.bounds
         mapView.showsUserLocation = true
         view.addSubview(mapView)
-    }
-
-    func setupWeatherLabel() {
-        weatherLabel.frame = CGRect(x: 20, y: 50, width: view.frame.width - 40, height: 50)
-        weatherLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        weatherLabel.textColor = .white
-        weatherLabel.textAlignment = .center
-        weatherLabel.layer.cornerRadius = 10
-        weatherLabel.clipsToBounds = true
-        view.addSubview(weatherLabel)
     }
 
     func configureLocationManager() {
