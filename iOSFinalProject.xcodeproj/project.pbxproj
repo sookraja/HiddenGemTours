@@ -20,7 +20,6 @@
 		9C5C8BEC2DAC943600870B1D /* TourDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BD52DAC943600870B1D /* TourDetailViewController.swift */; };
 		9C5C8BED2DAC943600870B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BD62DAC943600870B1D /* ViewController.swift */; };
 		9C5C8BEE2DAC943600870B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BD82DAC943600870B1D /* AppDelegate.swift */; };
-		9C5C8BEF2DAC943600870B1D /* InteractiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BDB2DAC943600870B1D /* InteractiveMapViewController.swift */; };
 		9C5C8BF02DAC943600870B1D /* MapTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BE02DAC943600870B1D /* MapTableCell.swift */; };
 		9C5C8BF12DAC943600870B1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BE12DAC943600870B1D /* SceneDelegate.swift */; };
 		9C5C8BF22DAC943600870B1D /* TourDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C8BE22DAC943600870B1D /* TourDataModel.xcdatamodeld */; };
@@ -57,7 +56,6 @@
 		9C5C8BD82DAC943600870B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C5C8BD92DAC943600870B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C5C8BDA2DAC943600870B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C5C8BDB2DAC943600870B1D /* InteractiveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveMapViewController.swift; sourceTree = "<group>"; };
 		9C5C8BDC2DAC943600870B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C5C8BDE2DAC943600870B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C5C8BE02DAC943600870B1D /* MapTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableCell.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				9C5C8BD82DAC943600870B1D /* AppDelegate.swift */,
 				9C5C8BD92DAC943600870B1D /* Assets.xcassets */,
 				9C5C8BDA2DAC943600870B1D /* Info.plist */,
-				9C5C8BDB2DAC943600870B1D /* InteractiveMapViewController.swift */,
 				9C5C8BDD2DAC943600870B1D /* LaunchScreen.storyboard */,
 				9C5C8BDF2DAC943600870B1D /* Main.storyboard */,
 				9C5C8BE02DAC943600870B1D /* MapTableCell.swift */,
@@ -265,7 +262,6 @@
 				9C7D7BB92DAD9A33007F0541 /* Validator.swift in Sources */,
 				9CAC526F2DACDCF4007E07F8 /* HelpScreenViewController.swift in Sources */,
 				9C5C8BEE2DAC943600870B1D /* AppDelegate.swift in Sources */,
-				9C5C8BEF2DAC943600870B1D /* InteractiveMapViewController.swift in Sources */,
 				9C5C8BF02DAC943600870B1D /* MapTableCell.swift in Sources */,
 				9C5C8BFA2DAC95D500870B1D /* WeatherAPIResponse.swift in Sources */,
 				9C5C8BF12DAC943600870B1D /* SceneDelegate.swift in Sources */,
