@@ -222,6 +222,13 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
             
             return tableCell
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "showWebView",
+               let destination = segue.destination as? CityFactsViewController {
+                destination.cityName = selectedCity
+            }
+        }
         
         // WeatherKit Implementation:
         
