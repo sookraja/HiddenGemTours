@@ -1,7 +1,7 @@
 //
 //  HelpScreenViewController.swift
 //  iOSFinalProject
-//
+//  Desc: For help and support resources - to be implemented
 //  Created by Annette Sookraj on 2025-04-14.
 //
 

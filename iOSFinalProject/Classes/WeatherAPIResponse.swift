@@ -1,7 +1,7 @@
 //
 //  WeatherViewController.swift
 //  iOSFinalProject
-//
+// Stores JSON Data from API call
 //  Created by Annette Sookraj on 2025-03-28.
 //
 

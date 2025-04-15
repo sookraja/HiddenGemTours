@@ -1,7 +1,7 @@
 //
 //  WeatherViewController.swift
 //  iOSFinalProject
-//
+//  Desc: Sends API request using the users current location, and decodes the JSON data to display it, also displays a mapview of their location
 //  Created by Annette Sookraj on 2025-03-28.
 //
 

@@ -45,6 +45,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         locationManager.startUpdatingLocation()
     }
     
+    // delay loading mapview until locations have loaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -192,7 +193,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
             }
         }
         
-        
+        // gets route to next stop on the tour
         @IBAction func nextStopTapped(_ sender: UIButton) {
             let nextIndex = currentStopIndex + 1
             if nextIndex < tourStops.count {
@@ -230,7 +231,8 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
             }
         }
         
-        // WeatherKit Implementation:
+        // WeatherKit Implementation: sends API call using selected location, and updates the label contents after decoding JSON
+        // Author: Annette Sookraj
         
         func fetchWeather(lat: Double, long: Double) {
             let apiKey = "35d5aa775f94458ebb2221915250504"

@@ -1,7 +1,7 @@
 //
 //  CityFactsViewController.swift
 //  iOSFinalProject
-//
+//  Desc: retrieves Point of Interest name and opens a webview to google displaying the search results
 //  Created by Blend Mustafa on 4/14/25.
 //
 
@@ -17,7 +17,7 @@ class CityFactsViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // format city name to be used in URL
         let encodedCityName = cityName?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         

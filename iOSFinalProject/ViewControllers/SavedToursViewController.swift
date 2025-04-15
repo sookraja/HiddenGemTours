@@ -1,7 +1,7 @@
 //
 //  SavedToursViewController.swift
 //  iOSFinalProject
-//
+//  Desc: stores tour stops, and displays saved tours in a tableview to be selected
 //  Created by Carlos Castro on 2025-04-12.
 //
 
@@ -22,6 +22,7 @@ class SavedToursViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // load saved tours from array
         savedTours = tourManager.loadTours()
         
         if savedTours.isEmpty {
@@ -30,6 +31,7 @@ class SavedToursViewController: UIViewController {
         }
     }
     
+    // gets tour stops for selected tour and displays them in tourDetailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTourDetail",
            let indexPath = tableView.indexPathForSelectedRow,
@@ -39,11 +41,11 @@ class SavedToursViewController: UIViewController {
         }
     }
     
+    // Unwind Segue back to ToursView
     @IBAction func unwindToToursViewController(segue: UIStoryboardSegue)
-    {
-        
-    }
+    {}
     
+
     func addTours() {
         let tour1Stop1 = TourData()
         tour1Stop1.id = 1
@@ -189,10 +191,11 @@ class SavedToursViewController: UIViewController {
     }
 }
 
+// Displays tour list in a table view
 extension SavedToursViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return savedTours.count
+        return savedTours.count // populates number of rows with amount of saved tours
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
