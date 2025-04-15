@@ -12,9 +12,9 @@ import CoreLocation
 
 class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var tourNameLabel: UILabel!
-    @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var tourNameLabel: UILabel!
+    @IBOutlet var myTableView: UITableView!
 
     var tourEntity: TourEntity!
     let tourManager = TourManager()
