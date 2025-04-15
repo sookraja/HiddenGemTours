@@ -38,7 +38,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         showTour()
     }
     
-  
+    //Calculates walking directions from user's current location to specified tour stop
     func calculateDirectionsToStop(stopIndex: Int) {
         currentStopIndex = stopIndex
         
@@ -109,7 +109,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         }
     }
 
-    
+    //putting down a line for the user to use for navigation
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         renderer.strokeColor = UIColor.red
@@ -128,7 +128,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         }
     }
 
-    
+    //cycles through the index and once it hits the end the tour is complete
     @IBAction func nextStopTapped(_ sender: UIButton) {
         let nextIndex = currentStopIndex + 1
         if nextIndex < tourStops.count {
@@ -141,6 +141,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate, UITableView
         }
     }
     
+    //this is for table view to the instructions and distance to the drop pin
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routeSteps.count
     }

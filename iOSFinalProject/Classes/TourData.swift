@@ -10,6 +10,8 @@
 import Foundation
 import CoreLocation
 
+//Stores data for the tour stops and its coordinates
+
 class TourData: NSObject, Codable {
     var id: Int?
     var name: String?
